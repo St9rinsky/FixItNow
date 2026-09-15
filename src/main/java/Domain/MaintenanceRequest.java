@@ -1,3 +1,5 @@
+package Domain;
+
 public class MaintenanceRequest {
 
     private int id;
