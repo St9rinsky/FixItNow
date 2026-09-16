@@ -1,6 +1,6 @@
-package Repository;
+package com.fixitnow.Repository;
 
-import Domain.MaintenanceRequest;
+import com.fixitnow.Domain.MaintenanceRequest;
 
 import java.util.ArrayList;
 import java.util.List;

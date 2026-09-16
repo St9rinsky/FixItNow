@@ -1,4 +1,4 @@
-package Domain;
+package com.fixitnow.Domain;
 
 public class MaintenanceRequest {
 

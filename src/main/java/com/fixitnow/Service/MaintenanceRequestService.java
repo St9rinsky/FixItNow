@@ -1,9 +1,9 @@
-package Service;
+package com.fixitnow.Service;
 
-import Domain.MaintenanceRequest;
-import Domain.Unit;
-import Domain.User;
-import Repository.MaintenanceRequestRepository;
+import com.fixitnow.Domain.MaintenanceRequest;
+import com.fixitnow.Domain.Unit;
+import com.fixitnow.Domain.User;
+import com.fixitnow.Repository.MaintenanceRequestRepository;
 
 public class MaintenanceRequestService {
     private final MaintenanceRequestRepository repo;

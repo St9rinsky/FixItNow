@@ -1,6 +1,6 @@
-package Repository;
+package com.fixitnow.Repository;
 
-import Domain.MaintenanceRequest;
+import com.fixitnow.Domain.MaintenanceRequest;
 
 public interface MaintenanceRequestRepository {
 
