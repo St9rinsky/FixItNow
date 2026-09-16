@@ -2,7 +2,7 @@ package Domain;
 
 public class MaintenanceRequest {
 
-    private final int id;
+    private int id;
     private final String title;
     private String description;
     private final String createdAt;
@@ -14,8 +14,7 @@ public class MaintenanceRequest {
     private Status status;
     private Priority priority;
 
-    public MaintenanceRequest(int id, String title, String description, User user) {
-        this.id = id;
+    public MaintenanceRequest(String title, String description, User user) {
         this.title = title;
         this.description = description;
 
@@ -59,6 +58,9 @@ public class MaintenanceRequest {
 
 
     //------------------------------------------SETTERS------------------------------------//
+    public void setId(int id) {
+        this.id = id;
+    }
     public void updateDescription(String description) {
         this.description = description;
     }
