@@ -1,13 +1,21 @@
 package com.fixitnow.Domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Unit {
 
-    private final int id;
+    @Id
+    private Long id;
+
     private final String unitNumber;
     private Property property;
+
+    @OneToMany(mappedBy = "unit")
     private final List<MaintenanceRequest> maintenanceRequests;
 
     public Unit(int id, String unitNumber) {
@@ -17,7 +25,7 @@ public class Unit {
     }
 
     //-----------------GETTERS------------------//
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
