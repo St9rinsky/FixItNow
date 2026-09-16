@@ -1,8 +1,16 @@
 package com.fixitnow.Domain;
 
-public class MaintenanceRequest {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    private int id;
+@Entity
+public class MaintenanceRequest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private final String title;
     private String description;
     private final String createdAt;
@@ -23,7 +31,7 @@ public class MaintenanceRequest {
     }
 
     //----------------------------------------GETTERS---------------------------------//
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -58,9 +66,6 @@ public class MaintenanceRequest {
 
 
     //------------------------------------------SETTERS------------------------------------//
-    public void setId(int id) {
-        this.id = id;
-    }
     public void updateDescription(String description) {
         this.description = description;
     }
