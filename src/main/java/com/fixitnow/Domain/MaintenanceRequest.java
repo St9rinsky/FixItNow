@@ -16,7 +16,8 @@ public class MaintenanceRequest {
     @ManyToOne
     private Unit unit;
 
-    private final User createdBy;
+    @ManyToOne
+    private User createdBy;
 
     private Status status;
     private Priority priority;
