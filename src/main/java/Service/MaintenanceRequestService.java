@@ -9,7 +9,7 @@ public class MaintenanceRequestService {
     private final MaintenanceRequestRepository repo;
 
     public MaintenanceRequestService(MaintenanceRequestRepository repository) {
-        this.repository = repository;
+        this.repo = repository;
     }
 
     public MaintenanceRequest createRequest(
