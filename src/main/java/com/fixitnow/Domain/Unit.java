@@ -18,7 +18,7 @@ public class Unit {
     @OneToMany(mappedBy = "unit")
     private final List<MaintenanceRequest> maintenanceRequests;
 
-    public Unit(int id, String unitNumber) {
+    public Unit(Long id, String unitNumber) {
         this.id = id;
         this.unitNumber = unitNumber;
         this.maintenanceRequests = new ArrayList<>();
