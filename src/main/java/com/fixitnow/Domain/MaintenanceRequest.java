@@ -1,9 +1,6 @@
 package com.fixitnow.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class MaintenanceRequest {
@@ -16,7 +13,9 @@ public class MaintenanceRequest {
     private final String createdAt;
     private String updatedAt;
 
+    @ManyToOne
     private Unit unit;
+
     private final User createdBy;
 
     private Status status;
