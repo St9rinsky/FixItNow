@@ -1,5 +1,8 @@
 package Domain;
 
 public enum Priority {
-    CRITICAL;
+    LOW,
+    MEDIUM,
+    HIGH,
+    URGENT;
 }
