@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Property {
 
-    private int id;
+    private final int id;
     private String name;
     private String address;
-    private List<Unit> units;
+    private final List<Unit> units;
 
     public Property(int id, String name, String address) {
         this.id = id;
@@ -17,14 +17,7 @@ public class Property {
         this.units = new ArrayList<>();
     }
 
-    public void addUnit(Unit unit) {
-        units.add(unit);
-    }
-
-    public List<Unit> getUnits() {
-        return units;
-    }
-
+    //----------------------------------GETTERS-------------------------------//
     public int getId() {
         return id;
     }
@@ -35,5 +28,24 @@ public class Property {
 
     public String getAddress() {
         return address;
+    }
+
+    public List<Unit> getUnits() {
+        return units;
+    }
+
+    //-----------------------------------------------------SETTERS---------------------------------//
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void updateAddress(String address) {
+        this.address = address;
+    }
+
+    //-----------------------------------------------------------------------------------------------//
+    public void addUnit(Unit unit) {
+        units.add(unit);
+        unit.setProperty(this);
     }
 }
