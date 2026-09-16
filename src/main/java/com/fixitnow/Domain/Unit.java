@@ -1,6 +1,8 @@
 package com.fixitnow.Domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ public class Unit {
     private Long id;
 
     private final String unitNumber;
+
+    @ManyToOne
     private Property property;
 
     @OneToMany(mappedBy = "unit")
