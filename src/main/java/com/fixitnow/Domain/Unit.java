@@ -1,9 +1,6 @@
 package com.fixitnow.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +9,24 @@ import java.util.List;
 public class Unit {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final String unitNumber;
+    private String unitNumber;
 
     @ManyToOne
     private Property property;
 
     @OneToMany(mappedBy = "unit")
-    private final List<MaintenanceRequest> maintenanceRequests;
+    private final List<MaintenanceRequest> maintenanceRequests = new ArrayList<>();
 
-    public Unit(Long id, String unitNumber) {
-        this.id = id;
+    public Unit(String unitNumber) {
         this.unitNumber = unitNumber;
-        this.maintenanceRequests = new ArrayList<>();
     }
 
+    protected Unit() {
+
+    }
     //-----------------GETTERS------------------//
     public Long getId() {
         return id;
