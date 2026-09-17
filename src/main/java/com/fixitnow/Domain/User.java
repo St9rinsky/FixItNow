@@ -1,14 +1,23 @@
 package com.fixitnow.Domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+
+@Entity
 public class User {
-    private int id;
+    @Id
+    private Long id;
     private String name;
     private String email;
-    private int mobileNum;
+    private String mobileNum;
+
+    @Enumerated(EnumType.STRING)
     private Roles role;
 
 
-    public User(int id, String name, String email, int mobileNum, Roles role) {
+    public User(Long id, String name, String email, String mobileNum, Roles role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -18,7 +27,7 @@ public class User {
 
     //----------GETTERS----------------//
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -39,10 +48,6 @@ public class User {
     }
 
     //-----------SETTERS-----------------//
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;
