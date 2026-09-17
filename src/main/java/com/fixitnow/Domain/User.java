@@ -1,14 +1,13 @@
 package com.fixitnow.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String email;
     private String mobileNum;
@@ -16,13 +15,15 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Roles role;
 
-
-    public User(Long id, String name, String email, String mobileNum, Roles role) {
-        this.id = id;
+//--------------------------CONSTRUCTORS----------------------------------------------------//
+    public User(String name, String email, String mobileNum, Roles role) {
         this.name = name;
         this.email = email;
         this.mobileNum = mobileNum;
         this.role = role;
+    }
+
+    protected User() {
     }
 
     //----------GETTERS----------------//
