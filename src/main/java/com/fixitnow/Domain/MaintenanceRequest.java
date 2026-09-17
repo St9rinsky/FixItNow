@@ -2,6 +2,8 @@ package com.fixitnow.Domain;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class MaintenanceRequest {
     @Id
@@ -10,8 +12,8 @@ public class MaintenanceRequest {
 
     private String title;
     private String description;
-    private String createdAt;
-    private String updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne
     private Unit unit;
@@ -19,15 +21,16 @@ public class MaintenanceRequest {
     @ManyToOne
     private User createdBy;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
     private Priority priority;
 
     public MaintenanceRequest(String title, String description, User user) {
         this.title = title;
         this.description = description;
-
         this.createdBy = user;
-        this.createdAt = "now";
     }
 
     protected MaintenanceRequest() {
@@ -52,7 +55,7 @@ public class MaintenanceRequest {
         return unit;
     }
 
-    public User getAuthor() {
+    public User getCreatedBy() {
         return createdBy;
     }
 
@@ -64,8 +67,12 @@ public class MaintenanceRequest {
         return priority;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
 
@@ -74,9 +81,16 @@ public class MaintenanceRequest {
         this.description = description;
     }
 
-    public void updateTime(String updated) {
-        this.updatedAt = updated;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
     }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
