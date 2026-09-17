@@ -39,7 +39,7 @@ public class User {
         return email;
     }
 
-    public int getMobileNum() {
+    public String getMobileNum() {
         return mobileNum;
     }
 
@@ -57,7 +57,7 @@ public class User {
         this.email = email;
     }
 
-    public void setMobileNum(int mobileNum) {
+    public void setMobileNum(String mobileNum) {
         this.mobileNum = mobileNum;
     }
 
