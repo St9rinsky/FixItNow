@@ -8,9 +8,9 @@ public class MaintenanceRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final String title;
+    private String title;
     private String description;
-    private final String createdAt;
+    private String createdAt;
     private String updatedAt;
 
     @ManyToOne
@@ -28,6 +28,10 @@ public class MaintenanceRequest {
 
         this.createdBy = user;
         this.createdAt = "now";
+    }
+
+    protected MaintenanceRequest() {
+
     }
 
     //----------------------------------------GETTERS---------------------------------//
