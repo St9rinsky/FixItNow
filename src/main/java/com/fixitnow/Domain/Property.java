@@ -1,8 +1,6 @@
 package com.fixitnow.Domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +9,22 @@ import java.util.List;
 public class Property {
 
     @Id
-    private final Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
     private String address;
 
     @OneToMany(mappedBy = "property")
-    private final List<Unit> units;
+    private final List<Unit> units = new ArrayList<>();
 
-    public Property(Long id, String name, String address) {
-        this.id = id;
+    public Property(String name, String address) {
         this.name = name;
         this.address = address;
-        this.units = new ArrayList<>();
+    }
+
+    protected Property () {
+
     }
 
     //----------------------------------GETTERS-------------------------------//
