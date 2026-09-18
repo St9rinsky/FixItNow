@@ -8,6 +8,8 @@ import com.fixitnow.Repository.UnitRepository;
 import com.fixitnow.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MaintenanceRequestService {
     private final MaintenanceRequestRepository repo;
@@ -36,5 +38,9 @@ public class MaintenanceRequestService {
         repo.save(request);
 
         return request;
+    }
+
+    public List<MaintenanceRequest> getAllRequests() {
+        return repo.findAll();
     }
 }
