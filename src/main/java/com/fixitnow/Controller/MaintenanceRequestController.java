@@ -3,9 +3,6 @@ package com.fixitnow.Controller;
 import com.fixitnow.DTO.CreateMaintenanceRequest;
 import com.fixitnow.DTO.MaintenanceRequestResponse;
 import com.fixitnow.Domain.MaintenanceRequest;
-import com.fixitnow.Domain.Roles;
-import com.fixitnow.Domain.Unit;
-import com.fixitnow.Domain.User;
 import com.fixitnow.Service.MaintenanceRequestService;
 
 import org.springframework.web.bind.annotation.PostMapping;
