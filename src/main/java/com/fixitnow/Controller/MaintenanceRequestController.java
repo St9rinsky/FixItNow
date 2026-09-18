@@ -1,6 +1,7 @@
 package com.fixitnow.Controller;
 
 import com.fixitnow.DTO.Requests.CreateMaintenanceRequest;
+import com.fixitnow.DTO.Requests.UpdateMaintenanceRequest;
 import com.fixitnow.DTO.Response.MaintenanceRequestResponse;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Service.MaintenanceRequestService;
@@ -43,6 +44,16 @@ public class MaintenanceRequestController {
     @GetMapping("/{id}")
     public MaintenanceRequestResponse getRequestById(@PathVariable Long id) {
         MaintenanceRequest request = service.getRequestById(id);
+
+        return new MaintenanceRequestResponse(request);
+    }
+
+    @PatchMapping("/{id}")
+    public MaintenanceRequestResponse updateRequest(
+            @PathVariable Long id,
+            @RequestBody UpdateMaintenanceRequest update) {
+
+        MaintenanceRequest request = service.updateRequest(id, update);
 
         return new MaintenanceRequestResponse(request);
     }
