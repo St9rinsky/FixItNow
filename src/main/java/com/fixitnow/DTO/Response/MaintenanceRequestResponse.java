@@ -1,4 +1,4 @@
-package com.fixitnow.DTO;
+package com.fixitnow.DTO.Response;
 
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Domain.Priority;
