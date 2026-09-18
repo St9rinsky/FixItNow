@@ -5,10 +5,9 @@ import com.fixitnow.DTO.Response.MaintenanceRequestResponse;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Service.MaintenanceRequestService;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/maintenance-requests")
@@ -30,4 +29,14 @@ public class MaintenanceRequestController {
         MaintenanceRequestResponse response = new MaintenanceRequestResponse(maintenanceRequest);
         return response;
    }
+
+    @GetMapping
+    public List<MaintenanceRequestResponse> getAllRequests() {
+
+        List<MaintenanceRequest> requests = service.getAllRequests();
+
+        return requests.stream()
+                .map(request -> new MaintenanceRequestResponse(request))
+                .toList();
+    }
 }
