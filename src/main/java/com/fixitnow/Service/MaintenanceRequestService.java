@@ -43,4 +43,8 @@ public class MaintenanceRequestService {
     public List<MaintenanceRequest> getAllRequests() {
         return repo.findAll();
     }
+
+    public MaintenanceRequest getRequestById(Long id) {
+        return repo.findById(id).orElseThrow();
+    }
 }

@@ -39,4 +39,11 @@ public class MaintenanceRequestController {
                 .map(request -> new MaintenanceRequestResponse(request))
                 .toList();
     }
+
+    @GetMapping("/{id}")
+    public MaintenanceRequestResponse getRequestById(@PathVariable Long id) {
+        MaintenanceRequest request = service.getRequestById(id);
+
+        return new MaintenanceRequestResponse(request);
+    }
 }
