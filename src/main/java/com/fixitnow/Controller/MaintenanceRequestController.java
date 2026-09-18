@@ -1,7 +1,7 @@
 package com.fixitnow.Controller;
 
-import com.fixitnow.DTO.CreateMaintenanceRequest;
-import com.fixitnow.DTO.MaintenanceRequestResponse;
+import com.fixitnow.DTO.Requests.CreateMaintenanceRequest;
+import com.fixitnow.DTO.Response.MaintenanceRequestResponse;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Service.MaintenanceRequestService;
 
