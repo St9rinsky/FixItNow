@@ -1,5 +1,6 @@
 package com.fixitnow.Service;
 
+import com.fixitnow.DTO.Requests.UpdateMaintenanceRequest;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Domain.Unit;
 import com.fixitnow.Domain.User;
@@ -25,6 +26,7 @@ public class MaintenanceRequestService {
         this.unitRepo = unitRepo;
     }
 
+    //CREATE
     public MaintenanceRequest createRequest(
             String title,
             String description,
@@ -40,11 +42,23 @@ public class MaintenanceRequestService {
         return request;
     }
 
+    //GET
     public List<MaintenanceRequest> getAllRequests() {
         return repo.findAll();
     }
 
     public MaintenanceRequest getRequestById(Long id) {
         return repo.findById(id).orElseThrow();
+    }
+
+    //UPDATE
+    public MaintenanceRequest updateRequest(Long id, UpdateMaintenanceRequest update) {
+        MaintenanceRequest request = repo.findById(id).orElseThrow();
+
+        request.setDescription(update.getDescription());
+        request.updateStatus(update.getStatus());
+        request.updatePriority(update.getPriority());
+
+        return repo.save(request);
     }
 }
