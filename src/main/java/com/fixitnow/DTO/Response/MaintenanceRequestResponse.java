@@ -4,12 +4,16 @@ import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Domain.Priority;
 import com.fixitnow.Domain.Status;
 
+import java.time.LocalDateTime;
+
 public class MaintenanceRequestResponse {
     private Long id;
     private String title;
     private String description;
     private Status status;
     private Priority priority;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public MaintenanceRequestResponse(MaintenanceRequest request) {
         this.id = request.getId();
@@ -17,6 +21,8 @@ public class MaintenanceRequestResponse {
         this.description = request.getDescription();
         this.status = request.getStatus();
         this.priority = request.getPriority();
+        this.createdAt = request.getCreatedAt();
+        this.updatedAt = request.getUpdatedAt();
     }
 
     public Long getId() {
@@ -37,5 +43,13 @@ public class MaintenanceRequestResponse {
 
     public Priority getPriority() {
         return priority;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 }
