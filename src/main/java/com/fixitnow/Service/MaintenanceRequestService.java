@@ -61,4 +61,11 @@ public class MaintenanceRequestService {
 
         return repo.save(request);
     }
+
+    //DELETE
+    public void deleteRequest(Long id) {
+        MaintenanceRequest request = repo.findById(id).orElseThrow();
+
+        repo.delete(request);
+    }
 }

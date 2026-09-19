@@ -57,4 +57,9 @@ public class MaintenanceRequestController {
 
         return new MaintenanceRequestResponse(request);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteRequest(@PathVariable Long id) {
+        service.deleteRequest(id);
+    }
 }
