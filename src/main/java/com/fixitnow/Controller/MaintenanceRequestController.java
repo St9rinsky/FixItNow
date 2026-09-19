@@ -6,6 +6,7 @@ import com.fixitnow.DTO.Response.MaintenanceRequestResponse;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Service.MaintenanceRequestService;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class MaintenanceRequestController {
     }
 
     @PostMapping
-    public MaintenanceRequestResponse createdRequest(@RequestBody CreateMaintenanceRequest request)  {
+    public MaintenanceRequestResponse createdRequest(@Valid @RequestBody CreateMaintenanceRequest request)  {
         MaintenanceRequest maintenanceRequest = service.createRequest(
                 request.getTitle(),
                 request.getDescription(),
