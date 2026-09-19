@@ -25,7 +25,7 @@ public class MaintenanceRequest {
     private User assignedTo;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.OPEN;
 
     @Enumerated(EnumType.STRING)
     private Priority priority;
