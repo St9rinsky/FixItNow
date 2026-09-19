@@ -60,9 +60,15 @@ public class MaintenanceRequestService {
         .orElseThrow(() -> new ResourceNotFoundException(
                 "Maintenance request not found: " + id));
 
-        request.setDescription(update.getDescription());
-        request.updateStatus(update.getStatus());
-        request.updatePriority(update.getPriority());
+        if (update.getDescription()!= null && !update.getDescription().isBlank()){
+            request.setDescription(update.getDescription());
+        }
+        if (update.getStatus()!= null) {
+            request.updateStatus(update.getStatus());
+        }
+        if (update.getPriority() != null) {
+            request.updatePriority(update.getPriority());
+        }
 
         return repo.save(request);
     }
