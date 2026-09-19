@@ -34,4 +34,12 @@ public class ExceptionsHandler {
 
         return response;
     }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleUnauthorized(UnauthorizedException exception) {
+        ErrorResponse response = new ErrorResponse(403, exception.getMessage());
+
+        return response;
+    }
 }

@@ -2,6 +2,7 @@ package com.fixitnow.Service;
 
 import com.fixitnow.DTO.Requests.UpdateMaintenanceRequest;
 import com.fixitnow.Domain.MaintenanceRequest;
+import com.fixitnow.Domain.Roles;
 import com.fixitnow.Domain.Unit;
 import com.fixitnow.Domain.User;
 import com.fixitnow.Exceptions.ResourceNotFoundException;
@@ -34,6 +35,12 @@ public class MaintenanceRequestService {
             Long userId,
             Long unitId) {
         User user = userRepo.findById(userId).orElseThrow();
+
+        if (user.getRole() == Roles.TECHNICIAN) {
+            throw new UnauthorizedException(
+                    "Technicians cannot create maintenance requests"
+            );
+
         Unit unit = unitRepo.findById(unitId).orElseThrow();
         MaintenanceRequest request = new MaintenanceRequest(title, description, user);
         unit.addMaintenanceRequest(request);
@@ -59,6 +66,7 @@ public class MaintenanceRequestService {
         MaintenanceRequest request = repo.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException(
                 "Maintenance request not found: " + id));
+
 
         if (update.getDescription()!= null && !update.getDescription().isBlank()){
             request.setDescription(update.getDescription());
