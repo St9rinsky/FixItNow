@@ -4,6 +4,7 @@ import com.fixitnow.DTO.Requests.UpdateMaintenanceRequest;
 import com.fixitnow.Domain.MaintenanceRequest;
 import com.fixitnow.Domain.Unit;
 import com.fixitnow.Domain.User;
+import com.fixitnow.Exceptions.ResourceNotFoundException;
 import com.fixitnow.Repository.MaintenanceRequestRepository;
 import com.fixitnow.Repository.UnitRepository;
 import com.fixitnow.Repository.UserRepository;
@@ -48,12 +49,16 @@ public class MaintenanceRequestService {
     }
 
     public MaintenanceRequest getRequestById(Long id) {
-        return repo.findById(id).orElseThrow();
+        return repo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Maintenance request not found: " + id));
     }
 
     //UPDATE
     public MaintenanceRequest updateRequest(Long id, UpdateMaintenanceRequest update) {
-        MaintenanceRequest request = repo.findById(id).orElseThrow();
+        MaintenanceRequest request = repo.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException(
+                "Maintenance request not found: " + id));
 
         request.setDescription(update.getDescription());
         request.updateStatus(update.getStatus());
@@ -64,7 +69,9 @@ public class MaintenanceRequestService {
 
     //DELETE
     public void deleteRequest(Long id) {
-        MaintenanceRequest request = repo.findById(id).orElseThrow();
+        MaintenanceRequest request = repo.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException(
+                "Maintenance request not found: " + id));
 
         repo.delete(request);
     }
