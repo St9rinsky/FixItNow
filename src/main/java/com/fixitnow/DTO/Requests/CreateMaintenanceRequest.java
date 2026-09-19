@@ -1,9 +1,18 @@
 package com.fixitnow.DTO.Requests;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class CreateMaintenanceRequest {
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String description;
+
+    @NotNull
     private Long userId;
+    @NotNull
     private Long unitId;
 
     public CreateMaintenanceRequest() {
