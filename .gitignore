@@ -1,3 +1,4 @@
 notes.txt
 application-local.properties
 target/
+src/main/resources/
