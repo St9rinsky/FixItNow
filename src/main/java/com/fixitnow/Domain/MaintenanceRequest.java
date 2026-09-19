@@ -21,6 +21,9 @@ public class MaintenanceRequest {
     @ManyToOne
     private User createdBy;
 
+    @ManyToOne
+    private User assignedTo;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -71,6 +74,10 @@ public class MaintenanceRequest {
         return createdAt;
     }
 
+    public User getAssignedTo() {
+        return assignedTo;
+    }
+
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -105,5 +112,9 @@ public class MaintenanceRequest {
 
     public void updatePriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public void assignTo(User user) {
+        this.assignedTo = user;
     }
 }
