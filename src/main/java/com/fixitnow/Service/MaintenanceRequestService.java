@@ -6,6 +6,7 @@ import com.fixitnow.Domain.Roles;
 import com.fixitnow.Domain.Unit;
 import com.fixitnow.Domain.User;
 import com.fixitnow.Exceptions.ResourceNotFoundException;
+import com.fixitnow.Exceptions.UnauthorizedException;
 import com.fixitnow.Repository.MaintenanceRequestRepository;
 import com.fixitnow.Repository.UnitRepository;
 import com.fixitnow.Repository.UserRepository;
@@ -35,12 +36,11 @@ public class MaintenanceRequestService {
             Long userId,
             Long unitId) {
         User user = userRepo.findById(userId).orElseThrow();
-
         if (user.getRole() == Roles.TECHNICIAN) {
             throw new UnauthorizedException(
                     "Technicians cannot create maintenance requests"
             );
-
+        }
         Unit unit = unitRepo.findById(unitId).orElseThrow();
         MaintenanceRequest request = new MaintenanceRequest(title, description, user);
         unit.addMaintenanceRequest(request);
