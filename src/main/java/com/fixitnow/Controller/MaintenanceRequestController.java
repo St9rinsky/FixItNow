@@ -52,7 +52,7 @@ public class MaintenanceRequestController {
     @PatchMapping("/{id}")
     public MaintenanceRequestResponse updateRequest(
             @PathVariable Long id,
-            @RequestBody UpdateMaintenanceRequest update) {
+            @Valid @RequestBody UpdateMaintenanceRequest update) {
 
         MaintenanceRequest request = service.updateRequest(id, update);
 
