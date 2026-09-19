@@ -2,6 +2,7 @@ package com.fixitnow.Exceptions;
 
 import com.fixitnow.DTO.Response.ErrorResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,6 +15,15 @@ public class ExceptionsHandler {
     public ErrorResponse handleResourceNotFound(ResourceNotFoundException exception) {
 
         ErrorResponse response = new ErrorResponse(404, exception.getMessage());
+
+        return response;
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleValidationError(MethodArgumentNotValidException exception) {
+
+        ErrorResponse response = new ErrorResponse(400, exception.getMessage());
 
         return response;
     }
