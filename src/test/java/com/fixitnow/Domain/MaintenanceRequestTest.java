@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class MaintenanceRequestTest {
     private MaintenanceRequest request;
@@ -29,5 +30,17 @@ public class MaintenanceRequestTest {
     void shouldUpdatePriority() {
         request.updatePriority(Priority.HIGH);
         assertEquals(Priority.HIGH, request.getPriority());
+    }
+
+    @Test
+    void shouldUpdateDescription() {
+        request.updateDescription("The window is completely broken.");
+        assertEquals("The window is completely broken.", request.getDescription());
+    }
+
+    @Test
+    void shouldHaveDefaultStatusAndPriority() {
+        assertEquals(Status.OPEN, request.getStatus());
+        assertNull(request.getPriority());
     }
 }
